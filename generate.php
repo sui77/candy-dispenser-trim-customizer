@@ -36,7 +36,7 @@ file_put_contents(dirname(__FILE__) . '/blender/files/' . $filename . '.py', $f)
 
 
 $out = [];
-$cmd = 'docker run --rm -v /containermounts/candy/blender/:/media/ ikester/blender /media/trim.blend --python /media/files/' . $filename . '.py 2>&1';
+$cmd = 'docker run --rm -v /tmp/candy-dispenser-trim-customizer:/media/ ikester/blender /media/trim.blend --python /media/files/' . $filename . '.py 2>&1';
 exec($cmd, $out);
 //unlink( dirname(__FILE__) . '/blender/files/' . $filename . '.py' );
 if (file_exists(dirname(__FILE__) . '/blender/files/' . $filename . '.stl')) {
