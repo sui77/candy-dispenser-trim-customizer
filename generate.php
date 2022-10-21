@@ -22,13 +22,10 @@ if (!file_exists(dirname(__FILE__) . '/blender/trim.py')) {
             copy(dirname(__FILE__) . '/static/' . $f, dirname(__FILE__) . '/blender/' . $f);
         }
     }
-    $fp = fopen(dirname(__FILE__) . '/blender/files/texts.txt', 'w');
-    fputs($fp, date("Y-m-d") . "\n");
 }
 
 
 
-file_put_contents(dirname(__FILE__) . '/blender/files/texts.txt', $filename . " " . $_POST['text'] . "\r\n", FILE_APPEND);
 
 $f = file_get_contents(dirname(__FILE__) . '/blender/trim.py');
 $f = str_replace(['###TEXT###', '###FILE###'], [$_POST['text'], $filename], $f);
