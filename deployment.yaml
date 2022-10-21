@@ -1,0 +1,84 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: candy
+  namespace: suat
+spec:
+  selector:
+    matchLabels:
+      run: candy
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: candy
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: "k8s10"
+      securityContext:
+        fsGroup: 117
+      containers:
+      - name: candy
+        image: docker.k8s.sui.li/candy
+        imagePullPolicy: Always
+        volumeMounts:
+        - name: candy-hostdata
+          mountPath: "/app/blender"
+        - name: dockersock
+          mountPath: "/var/run/docker.sock"
+        lifecycle:
+          postStart:
+            exec:
+              command: ["groupmod", "-g", "117", "docker"]
+      volumes:
+      - name: candy-hostdata
+        hostPath:
+          path: /containermounts/candy/blender
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: candy
+  namespace: suat
+  labels:
+    run: candy
+spec:
+  selector:
+    run: candy
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+
+---
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: candy
+  namespace: suat
+  annotations:
+    haproxy.org/check: "true"
+    haproxy.org/forwarded-for: "true"
+    haproxy.org/load-balance: "roundrobin"
+    haproxy.org/ssl-certificate: "tls-sui-li"
+    haproxy.org/ssl-redirect: "false"
+spec:
+  tls:
+  - hosts:
+    - 3d.sui.li
+    secretName: "tls-stage-recyclehero-de"
+  rules:
+  - host: "3d.sui.li"
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: candy
+            port:
+              number: 80
