@@ -17,6 +17,7 @@ if (is_null($recaptcha) || !isset($recaptcha['success']) || $recaptcha['success'
 
 if (!file_exists(dirname(__FILE__) . '/blender/trim.py')) {
     $dir = opendir(dirname(__FILE__) . '/static');
+    mkdir(dirname(__FILE__) . '/blender/files', 0777);
     while ($f = readdir($dir)) {
         if (!is_dir(dirname(__FILE__) . '/static/' . $f)) {
             copy(dirname(__FILE__) . '/static/' . $f, dirname(__FILE__) . '/blender/' . $f);
