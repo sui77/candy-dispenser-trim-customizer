@@ -1,4 +1,4 @@
 #!/bin/sh
 
-groupmod -g 117 docker
+groupmod -g 119 docker
 chmod 777 /app/blender
