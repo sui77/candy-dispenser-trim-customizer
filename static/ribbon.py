@@ -13,5 +13,5 @@ bpy.context.view_layer.objects.active = objText
 
 
 # export to stl
-bpy.ops.export_mesh.stl(filepath=str(('/media/files/###FILE###.stl')),   global_scale=10, use_selection=True)
-#bpy.ops.export_mesh.stl(filepath=str(('x.stl')),   global_scale=10, use_selection=True)
+bpy.ops.export_mesh.stl(filepath=str(('/media/files/###FILE###.stl')),   global_scale=10)
+#bpy.ops.export_mesh.stl(filepa th=str(('x.stl')),   global_scale=10, use_selection=True)

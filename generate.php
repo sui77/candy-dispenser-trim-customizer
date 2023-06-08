@@ -29,11 +29,12 @@ if (file_exists(dirname(__FILE__) . '/blender/files/' . $filename . '.stl')) {
     exit();
 }
 
-
+if (true) {
 $recaptcha = checkResponse($_POST['recaptcha']);
 if (is_null($recaptcha) || !isset($recaptcha['success']) || $recaptcha['success'] == false) {
     echo json_encode(['error' => 'Please verify that you are not a robot.']);
     exit();
+}
 }
 
 if (!file_exists(dirname(__FILE__) . '/blender/' . $modelfile['py'] )) {

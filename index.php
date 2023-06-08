@@ -52,7 +52,7 @@
             loader.load('./blender/files/' + file + '.stl', function (geometry) {
                 var material = new THREE.MeshPhongMaterial({color: 0x55ff33, specular: 0x888888, shininess: 100});
                 var mesh = new THREE.Mesh(geometry, material);
-                mesh.rotation.set(Math.PI / 2, 0, 0);
+                mesh.rotation.set(0, 0, 0);
                 mesh.position.set(0, 0, 0);
                 mesh.scale.set(0.1, 0.1, 0.1);
 
