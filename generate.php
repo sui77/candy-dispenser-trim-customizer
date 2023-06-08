@@ -10,11 +10,17 @@ $validFiles = [
         'blend' => 'trim.blend',
         'py' => 'trim.py',
     ],
-    'ribbon' => [
+    'ribbon500' => [
         'image' => 'sui77/blender:3.5.1',
-        'blend' => 'ribbon.blend',
+        'blend' => 'ribbon500.blend',
         'py' => 'ribbon.py',
     ],
+    'ribbon450' => [
+        'image' => 'sui77/blender:3.5.1',
+        'blend' => 'ribbon450.blend',
+        'py' => 'ribbon.py',
+    ],
+
 ];
 $modelfile = $_POST['modelfile'] ?? 'trim';
 if (!array_key_exists($modelfile, $validFiles)) {
