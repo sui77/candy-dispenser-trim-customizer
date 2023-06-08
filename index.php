@@ -46,7 +46,7 @@
             controls.enableZoom = true;
             controls.enablePan = true;
             controls.autoRotate = true;
-            controls.autoRotateSpeed = 2.75;
+            controls.autoRotateSpeed = .75;
 
             var loader = new STLLoader();
             loader.load('./blender/files/' + file + '.stl', function (geometry) {
