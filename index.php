@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Candy Dispenser Customizer</title>
+    <title>sui77's 3d model customizer</title>
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -46,7 +46,7 @@
             controls.enableZoom = true;
             controls.enablePan = true;
             controls.autoRotate = true;
-            controls.autoRotateSpeed = 5.75;
+            controls.autoRotateSpeed = 2.75;
 
             var loader = new STLLoader();
             loader.load('./blender/files/' + file + '.stl', function (geometry) {
@@ -122,7 +122,8 @@
         function submitForm(token) {
             let data = {
                 recaptcha: grecaptcha.getResponse(),
-                text: $('#text').val()
+                text: $('#text').val(),
+                modelfile: $('#modelfile').val(),
             }
             $('#model').html( $('<img src="ajax-loader.gif">') );
             $.ajax({
@@ -156,8 +157,9 @@
 
     <div class="row">
         <div class="twelve columns" style="margin-top:10px;margin-bottom:10px;">
-            <h2>Trim Customizer</h2>
-            Create your own trim for this <a href="https://www.thingiverse.com/thing:4543450">Nutella Glass Candy Dispenser.</a>
+            <h2>3d model customizer</h2>
+            Find my 3d models at <a href="https://www.printables.com/@sui77">printables.com/@sui77</a>
+            <hr>
         </div>
     </div>
 
@@ -165,6 +167,13 @@
     <div class="row">
         <div class="four columns">
             <form id="xform">
+
+                <select id="modelfile" class="u-full-width">
+                    <option value="">--- Select Model ---</option>
+                    <option value="trim">Nutella Jar Candy Dispenser Trim</option>
+                    <option value="ribbon">Nutella Jar Ribbon</option>
+                </select>
+
                 <input class="u-full-width" type="text" id="text" value="Your Text Here.">
 
                 <div class="g-recaptcha" data-sitekey="6LcES7QZAAAAAPlejsQrKjZlYW6nSYzYPGmzGhNH"></div>

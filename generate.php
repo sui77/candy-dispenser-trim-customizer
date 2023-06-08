@@ -2,7 +2,28 @@
 ini_set('display_errors', 1);
 header('Content-type: application/json');
 
-$filename = substr(sha1($_POST['text']), 0, 8);
+$fp = fopen('/app/blender/log.txt', 'a');
+
+$validFiles = [
+    'trim' => [
+        'image' => 'sui77/blender:2.82',
+        'blend' => 'trim.blend',
+        'py' => 'trim.py',
+    ],
+    'ribbon' => [
+        'image' => 'sui77/blender:3.5.1',
+        'blend' => 'ribbon.blend',
+        'py' => 'ribbon.py',
+    ],
+];
+$modelfile = $_POST['modelfile'] ?? 'trim';
+if (!array_key_exists($modelfile, $validFiles)) {
+    echo json_encode(['error' => 'Invalid model.', 'result' => '']);
+    exit();
+}
+$modelfile = $validFiles[$modelfile];
+
+$filename = substr(sha1(json_encode($_POST)), 0, 8);
 if (file_exists(dirname(__FILE__) . '/blender/files/' . $filename . '.stl')) {
     echo json_encode(['file' => $filename, 'result' => 'cached']);
     exit();
@@ -15,9 +36,9 @@ if (is_null($recaptcha) || !isset($recaptcha['success']) || $recaptcha['success'
     exit();
 }
 
-if (!file_exists(dirname(__FILE__) . '/blender/trim.py')) {
+if (!file_exists(dirname(__FILE__) . '/blender/' . $modelfile['py'] )) {
     $dir = opendir(dirname(__FILE__) . '/static');
-    mkdir(dirname(__FILE__) . '/blender/files', 0777);
+    @mkdir(dirname(__FILE__) . '/blender/files', 0777);
     while ($f = readdir($dir)) {
         if (!is_dir(dirname(__FILE__) . '/static/' . $f)) {
             copy(dirname(__FILE__) . '/static/' . $f, dirname(__FILE__) . '/blender/' . $f);
@@ -27,15 +48,20 @@ if (!file_exists(dirname(__FILE__) . '/blender/trim.py')) {
 
 
 
-
-$f = file_get_contents(dirname(__FILE__) . '/blender/trim.py');
+$f = file_get_contents(dirname(__FILE__) . '/blender/' . $modelfile['py']);
+$text = str_replace('"', '\"', $_POST['text']);
 $f = str_replace(['###TEXT###', '###FILE###'], [$_POST['text'], $filename], $f);
 file_put_contents(dirname(__FILE__) . '/blender/files/' . $filename . '.py', $f);
 
+fputs($fp, "lol4\n");
 
 $out = [];
-$cmd = 'docker run --rm -v /tmp/candy-dispenser-trim-customizer:/media/ ikester/blender /media/trim.blend --python /media/files/' . $filename . '.py 2>&1';
+$cmd = 'docker run --rm -v /tmp/modelcustomizer:/media/ ' . $modelfile['image'] . ' /media/' . $modelfile['blend'] . ' --python /media/files/' . $filename . '.py 2>&1';
+fputs($fp, $cmd . "\n");
 exec($cmd, $out);
+
+
+
 //unlink( dirname(__FILE__) . '/blender/files/' . $filename . '.py' );
 if (file_exists(dirname(__FILE__) . '/blender/files/' . $filename . '.stl')) {
     echo json_encode(['file' => $filename, 'result' => implode("\n", $out)]);

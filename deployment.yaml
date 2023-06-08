@@ -33,7 +33,7 @@ spec:
       volumes:
       - name: candy-hostdata
         hostPath:
-          path: /containermounts/candy/blender
+          path: /tmp/modelcustomizer
       - name: dockersock
         hostPath:
           path: /var/run/docker.sock
