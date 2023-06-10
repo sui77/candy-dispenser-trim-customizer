@@ -7,6 +7,8 @@ objIntersect = bpy.data.objects["Intersect"];
 
 
 objText.data.body = "###TEXT###"
+objText.data.font = bpy.data.fonts.load('/app/static/seguibl.ttf')
+#objText.data.font = bpy.data.fonts.load('C:\Projects\sui77\candy-dispenser-trim-customizer\static\calibrib.ttf')
 
 objTextMesh = objText.copy()
 objTextMesh.data = objText.data.copy()
