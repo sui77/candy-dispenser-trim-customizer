@@ -6,7 +6,7 @@ $fp = fopen('/app/blender/log.txt', 'a');
 
 $validFiles = [
     'trim' => [
-        'image' => 'sui77/blender:2.82',
+        'image' => 'sui77/blender:3.5.1',
         'blend' => 'trim.blend',
         'py' => 'trim.py',
     ],
