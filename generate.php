@@ -20,6 +20,11 @@ $validFiles = [
         'blend' => 'ribbon450.blend',
         'py' => 'ribbon.py',
     ],
+    'letters' => [
+         'image' => 'sui77/blender:3.5.1',
+         'blend' => 'fold-customizer.blend',
+         'py' => 'fold-customizer.py',
+     ],
 
 ];
 $modelfile = $_POST['modelfile'] ?? 'trim';
