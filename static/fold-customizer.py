@@ -2,7 +2,7 @@ import bpy
 
 """col = bpy.data.collections["Text"]"""
 
-text="[###TEXT###]"
+text="[###TEXTUPPER###]"
 """bpy.data.objects["C-A.004"].location = (4, 0, 0)"""
 
 newLetters = []
