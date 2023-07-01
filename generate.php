@@ -62,7 +62,7 @@ if (!file_exists(dirname(__FILE__) . '/blender/' . $modelfile['py'] )) {
 
 $f = file_get_contents(dirname(__FILE__) . '/blender/' . $modelfile['py']);
 $text = substr(str_replace('"', '\"', $_POST['text']), 0, 20);
-$f = str_replace(['###TEXT###', '###TEXTUPPER###', '###FILE###'], [$text, $text, $filename], $f);
+$f = str_replace(['###TEXT###', '###TEXTUPPER###', '###FILE###'], [$text, strtoupper($text), $filename], $f);
 file_put_contents(dirname(__FILE__) . '/blender/files/' . $filename . '.py', $f);
 
 fputs($fp, "lol4\n");
