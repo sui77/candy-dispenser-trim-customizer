@@ -10,7 +10,11 @@ x=0
 
 for i, c in enumerate(text):
     print (i, c, x)
-    objLetter = bpy.data.objects["C-" + c]
+    currentLetter = "C-" + c;
+    if not "C-"+c in bpy.context.scene.objects.keys():
+        currentLetter = "C-_"
+
+    objLetter = bpy.data.objects[currentLetter]
     objLetterCopy = objLetter.copy()
 
     bpy.context.collection.objects.link(objLetterCopy)

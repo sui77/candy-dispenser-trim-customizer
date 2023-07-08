@@ -170,7 +170,8 @@
 
                 <select id="modelfile" class="u-full-width">
                     <option value="">--- Select Model ---</option>
-                    <option value="letters">Foldable Letters</option>
+                    <option value="letters">Foldable Letters (flat)</option>
+                    <option value="letters+">Foldable Letters (+one layer)</option>
                     <option value="trim">Nutella Jar Candy Dispenser Trim</option>
                     <option value="ribbon450">Nutella 450g Jar Ribbon</option>
                     <option value="ribbon500">Nutella 500g Jar Ribbon</option>

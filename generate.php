@@ -25,7 +25,11 @@ $validFiles = [
          'blend' => 'fold-customizer.blend',
          'py' => 'fold-customizer.py',
      ],
-
+    'letters+' => [
+         'image' => 'sui77/blender:3.5.1',
+         'blend' => 'fold-customizer2.blend',
+         'py' => 'fold-customizer.py',
+     ],
 ];
 $modelfile = $_POST['modelfile'] ?? 'trim';
 if (!array_key_exists($modelfile, $validFiles)) {
