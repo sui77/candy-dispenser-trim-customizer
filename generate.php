@@ -5,6 +5,11 @@ header('Content-type: application/json');
 $fp = fopen('/app/blender/log.txt', 'a');
 
 $validFiles = [
+    'keytag' => [
+        'image' => 'sui77/blender:3.5.1',
+        'blend' => 'keytag.blend',
+        'py' => 'keytag.py',
+    ],
     'trim' => [
         'image' => 'sui77/blender:3.5.1',
         'blend' => 'trim.blend',

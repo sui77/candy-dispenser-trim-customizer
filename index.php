@@ -170,6 +170,7 @@
 
                 <select id="modelfile" class="u-full-width">
                     <option value="">--- Select Model ---</option>
+                    <option value="keytag">Stencil Type Keytag</option>
                     <option value="letters">Foldable Letters (flat)</option>
                     <option value="letters+">Foldable Letters (+one layer)</option>
                     <option value="trim">Nutella Jar Candy Dispenser Trim</option>
