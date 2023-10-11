@@ -33,11 +33,15 @@ objL.location = (-width/2, 0, 0.05)
 objR.location = (width/2, 0, 0.05)
 objC.dimensions.x = width
 
+objs = bpy.data.objects
+objs.remove(objs["Text"], do_unlink=True)
+
 bpy.ops.object.select_all(action='DESELECT')
-objL.select_set(True)
 objC.select_set(True)
+objL.select_set(True)
 objR.select_set(True)
 
 # export to stl
-bpy.ops.export_mesh.stl(filepath=str(('/media/files/###FILE###.stl')),   global_scale=10)
+bpy.ops.export_mesh.stl(filepath=str(('/media/files/###FILE###.stl')),   global_scale=10, use_selection=True)
+
 #bpy.ops.export_mesh.stl(filepath=str(('c:\\tmp\\x.stl')),   global_scale=10, use_selection=True)
