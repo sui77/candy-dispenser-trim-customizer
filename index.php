@@ -243,7 +243,7 @@
                     <option value="ribbon450" <?=($_SERVER['REQUEST_URI']=='/ribbon450')?'selected':''?>>Nutella 450g Jar Ribbon</option>
                 </select>
 
-                <input class="u-full-width" type="text" id="text" value="Your Text Here.">
+                <input class="u-full-width" type="text" id="text" placeholder="Enter your text here.">
 
 
                 <input type="submit" value="Generate STL">
