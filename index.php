@@ -34,14 +34,14 @@
                 var modalTinyBtn = new tingle.modal({
                     footer: true
                 });
-                modalTinyBtn.setContent("If you liked this model please hit the like button at its printables.com page, it means a lot to me!");
+                modalTinyBtn.setContent("Thanks for downloading! If you liked this model please hit the like button at its printables.com page, it means a lot to me!");
                 modalTinyBtn.addFooterBtn('Visit Printables model page', 'tingle-btn tingle-btn--primary tingle-btn--pull-right orange', function () {
                     window.open( link);
                 });
                 modalTinyBtn.addFooterBtn('Cancel', 'tingle-btn tingle-btn--default tingle-btn--pull-right', function () {
                     modalTinyBtn.close();
                 });
-                modalTinyBtn.open();
+                window.setTimeout(() => {modalTinyBtn.open()}, 3000);
                 liked.push(link);
             }
         }
