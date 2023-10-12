@@ -37,3 +37,8 @@
 input:disabled {
     color:#C3C3C3;
 }
+
+.orange {
+    background-color:#F76B3D !important;
+    color: white;
+}
