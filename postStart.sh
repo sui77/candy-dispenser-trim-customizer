@@ -1,7 +1,8 @@
 #!/bin/sh
 
 groupmod -g 119 docker
-chmod 777 /app/blender
 
-rm /app/blender/*.blend
-rm /app/blender/*.py
+mkdir -p /app/blender/files
+chmod -R 777 /app/blender
+cp -R /app/static/* /app/blender
+
