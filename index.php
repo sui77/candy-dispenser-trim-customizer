@@ -192,7 +192,7 @@
                         clearInterval(check);
                     }
                     if (data.status == 'success') {
-                        init('./blender/files/' + filename + '.stl');
+                        init('./blender/files/' + filename + '.stl', $('#modelfile').val());
                         $('#status').html(`<a href="/blender/files/${filename}.stl">Click here to download your stl file.</button></a>` );
                         $('input,select').removeAttr('disabled');
                     } else if (data.status == 'failed') {
