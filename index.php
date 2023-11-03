@@ -71,9 +71,14 @@
                     <option value="keytag" <?=($_SERVER['REQUEST_URI']=='/keytag')?'selected':''?>>Stencil Type Keytag</option>
                     <option value="trim" <?=($_SERVER['REQUEST_URI']=='/trim')?'selected':''?>>Nutella Jar Candy Dispenser Trim</option>
                     <option value="ribbon450" <?=($_SERVER['REQUEST_URI']=='/ribbon450')?'selected':''?>>Nutella 450g Jar Ribbon</option>
+                    <option data-placeholder="Manufacturer;Material;Filament Name" value="swatch" <?=($_SERVER['REQUEST_URI']=='/swatch')?'selected':''?>>Filament Swatch</option>
                 </select>
 
-                <input class="u-full-width" type="text" id="text" placeholder="Enter your text here.">
+                <input class="u-full-width js-textfield" type="text" id="text1" placeholder="">
+
+                <input class="u-full-width js-textfield" type="text" id="text2" placeholder="">
+
+                <input class="u-full-width js-textfield" type="text" id="text3" placeholder="">
 
 
                 <input type="submit" value="Generate STL">

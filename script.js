@@ -23,6 +23,14 @@ var objTypes = {
         scale: [0.08, 0.08, 0.08],
         url: 'https://www.printables.com/model/499766-nutella-jar-candy-dispenser-ii',
         popup: false
+    },
+    swatch: {
+        camera: [0,3 , 5],
+        rotation: [0, 0, 3.14/4 + 3.14*2.5],
+        position: [-0.5, 0, 0],
+        scale: [0.08, 0.08, 0.08],
+        url: 'https://www.printables.com/model/635456-filament-swatch-online-customizer',
+        popup: false
     }
 }
 
@@ -126,19 +134,39 @@ function animate() {
     renderer.render(scene, camera);
 }
 
+function changeModel(modelfile) {
+
+    let texts = $('option[value=' + modelfile + ']').data('placeholder');
+    if (typeof texts == 'undefined') {
+        texts = 'Enter your text here.';
+    }
+
+    let ta = texts.split(';');
+    $('.js-textfield').hide();
+    for (let s in ta) {
+        $('#text' + (1*s+1)).attr('placeholder', ta[s]);
+        $('#text' + (1*s+1)).show();
+    }
+    init('examples/' + modelfile + '.stl', modelfile);
+    animate();
+
+
+
+    window.history.pushState({"modelfile": modelfile },"", '/' + modelfile);
+
+}
 
 $(() => {
 
 
     if ($('#modelfile').val() != '') {
-        init('examples/' + $('#modelfile').val() + '.stl', $('#modelfile').val());
-        animate();
+        let mf = $('#modelfile').val();
+        changeModel(mf);
     }
 
     $('#modelfile').change( function() {
         let mf = $(this).val();
-        init('/examples/' +mf+ '.stl', mf);
-        animate();
+        changeModel(mf);
     });
 
     $('#xform').submit((e) => {
@@ -146,7 +174,9 @@ $(() => {
         $('input,select').attr('disabled', 'disabled');
         $('#status').html(`<p class="loading">submitting</p>` );
         let data = {
-            text: $('#text').val(),
+            text1: $('#text1').val(),
+            text2: $('#text2').val(),
+            text3: $('#text3').val(),
             modelfile: $('#modelfile').val(),
         }
         $('#model').html( $('') );

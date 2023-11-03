@@ -1,15 +1,15 @@
 #!/bin/bash
 
 
-docker run \
-  -d \
-  --rm \
-  --name redis \
-  -p 172.17.0.1:6379:6379 \
-  redis
+#docker run \
+#  -d \
+#  --rm \
+#  --name redis \
+#  -p 172.17.0.1:6379:6379 \
+# redis
 
 
-#docker build -t test .
+docker build -t testcd .
 docker run -it \
   --privileged \
   -v /var/run/docker.sock:/var/run/docker.sock \
@@ -17,4 +17,4 @@ docker run -it \
   -v /tmp/mdc:/app/blender \
   -e HOSTBDIR=/tmp/mdc \
   -p 84:80 \
-  test
+  testcd

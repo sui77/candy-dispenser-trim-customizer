@@ -34,6 +34,11 @@ $validFiles = [
          'blend' => 'fold-customizer2.blend',
          'py' => 'fold-customizer.py',
      ],
+     'swatch' => [
+         'image' => 'sui77/blender:3.5.1',
+         'blend' => 'filamentswatch.blend',
+         'py' => 'filamentswatch.py',
+     ]
 ];
 $modelfile = $_POST['modelfile'];
 if (!array_key_exists($modelfile, $validFiles)) {
@@ -50,8 +55,15 @@ if ($status != '') {
 }
 
 $f = file_get_contents(dirname(__FILE__) . '/blender/' . $modelfile['py']);
-$text = substr(str_replace('"', '\"', $_POST['text']), 0, 60);
-$f = str_replace(['###TEXT###', '###TEXTUPPER###', '###FILE###'], [$text, strtoupper($text), $filename], $f);
+
+$f = str_replace(['###FILE###'], [$filename], $f);
+for ($i=1; $i<4; $i++) {
+    $text = substr(str_replace('"', '\"', $_POST['text' . $i]), 0, 60);
+    if ($i==1) {
+        $f = str_replace(['###TEXT###', '###TEXTUPPER###'], [$text, strtoupper($text)], $f);
+    }
+    $f = str_replace(['###TEXT' . $i . '###', '###TEXTUPPER' . $i . '###'], [$text, strtoupper($text)], $f);
+}
 file_put_contents(dirname(__FILE__) . '/blender/files/' . $filename . '.py', $f);
 
 
