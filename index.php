@@ -46,7 +46,7 @@
     <script src="https://cdn.jsdelivr.net/npm/three@0.118.3/build/three.min.js"></script>
 
 
-    <script type="module" src="script.js"></script>
+    <script type="module" src="script.js?1"></script>
     <script>
     var liked = [];
     $(document).on('click', '.js-download', function() {
