@@ -210,7 +210,7 @@ function checkStatus(filename) {
                 if (typeof objTypes[$('#modelfile').val()] != 'undefined') {
                     link = objTypes[$('#modelfile').val()].url;
                 }
-                let el = `<a class="js-download" data-link="${link}" href="/blender/files/${filename}.stl">Click here to download your stl file.</button></a>`;
+                let el = `<a class="js-download" data-link="${link}" href="/download/${filename}.stl">Click here to download your stl file.</button></a>`;
 
                 $('#status').html(el);
 

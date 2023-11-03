@@ -1,4 +1,27 @@
-<!DOCTYPE html>
+<?php
+    include 'config.php';
+
+    $uri = $_SERVER['REQUEST_URI'];
+    if (preg_match('#/download/([a-f0-9]{8})\.stl$#', $uri, $match)) {
+        $path =  dirname(__FILE__) . '/blender/files/' . $match[1] . '.stl';
+        if (file_exists($path)) {
+
+            $data = $redis->hgetall("mc:{$match[1]}");
+            $filename = ($data['nf'] ?? $match[1]) . '.stl';
+
+            header('Content-type: application/octett-stream');
+            header('Content-Disposition: attachment; filename="' . $filename . '"');
+            $fp = fopen($path, 'r');
+            fpassthru($fp);
+            exit();
+        } else {
+            header('HTTP/1.0 404 Not Found', true, 404);
+            echo 'Not found';
+            exit();
+        }
+    }
+
+?><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
