@@ -8,6 +8,14 @@ var objTypes = {
         url: 'https://www.printables.com/model/611327-stencil-style-key-tag-online-customizer',
         popup: false
     },
+    keytag2: {
+        camera: [0, 9, 9],
+        rotation: [0, 0 , 3.14],
+        position: [-0.5, 0, 0],
+        scale: [0.21, 0.21, 0.21],
+        url: 'https://www.printables.com/model/615049-minimalistic-flexible-key-tags/files',
+        popup: false
+    },
     trim: {
         camera: [0, 12, 6],
         rotation: [3.14, 0, 2],
@@ -29,7 +37,7 @@ var objTypes = {
         rotation: [0, 0, 3.14/4 + 3.14*2.5],
         position: [-0.5, 0, 0],
         scale: [0.08, 0.08, 0.08],
-        url: 'https://www.printables.com/model/635456-filament-swatch-online-customizer',
+        url: 'https://www.printables.com/model/263740-filament-swatch-remix/files',
         popup: false
     }
 }

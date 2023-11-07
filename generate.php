@@ -10,6 +10,13 @@ $validFiles = [
         'py' => 'keytag.py',
         'nf' => 'KeyTag',
     ],
+    'keytag2' => [
+        'image' => 'sui77/blender:3.5.1',
+        'blend' => 'keytag2.blend',
+        'py' => 'keytag.py',
+        'nf' => 'KeyTag2',
+    ],
+
     'trim' => [
         'image' => 'sui77/blender:3.5.1',
         'blend' => 'trim.blend',

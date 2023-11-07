@@ -46,7 +46,7 @@
     <script src="https://cdn.jsdelivr.net/npm/three@0.118.3/build/three.min.js"></script>
 
 
-    <script type="module" src="script.js?1"></script>
+    <script type="module" src="script.js?2"></script>
     <script>
     var liked = [];
     $(document).on('click', '.js-download', function() {
@@ -92,9 +92,10 @@
                 <select id="modelfile" class="u-full-width">
                     <option value="">--- Select Model ---</option>
                     <option value="keytag" <?=($_SERVER['REQUEST_URI']=='/keytag')?'selected':''?>>Stencil Type Keytag</option>
+                    <option value="keytag2" <?=($_SERVER['REQUEST_URI']=='/keytag2')?'selected':''?>>Minimalistic Flexible Key Tags by @Akio</option>
                     <option value="trim" <?=($_SERVER['REQUEST_URI']=='/trim')?'selected':''?>>Nutella Jar Candy Dispenser Trim</option>
                     <option value="ribbon450" <?=($_SERVER['REQUEST_URI']=='/ribbon450')?'selected':''?>>Nutella 450g Jar Ribbon</option>
-                    <option data-placeholder="Manufacturer;Material;Filament Name" value="swatch" <?=($_SERVER['REQUEST_URI']=='/swatch')?'selected':''?>>Filament Swatch</option>
+                    <option data-placeholder="Manufacturer;Material;Filament Name" value="swatch" <?=($_SERVER['REQUEST_URI']=='/swatch')?'selected':''?>>Filament Swatch by @Yimir_326009</option>
                 </select>
 
                 <input class="u-full-width js-textfield" type="text" id="text1" placeholder="">
