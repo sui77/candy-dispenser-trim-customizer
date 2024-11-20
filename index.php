@@ -46,8 +46,14 @@
     <script src="https://cdn.jsdelivr.net/npm/three@0.118.3/build/three.min.js"></script>
 
 
-    <script type="module" src="script.js?2"></script>
+    <script type="module" src="script.js?3"></script>
     <script>
+<?php $d=[]; foreach ($validFiles as $k => $v) {
+        $d[$k] = $v['view'];
+        $d[$k]['popup'] = false;
+
+ } echo "objTypes=" . json_encode($d); ?>
+
     var liked = [];
     $(document).on('click', '.js-download', function() {
         let link = $(this).data('link');
@@ -57,7 +63,7 @@
                 var modalTinyBtn = new tingle.modal({
                     footer: true
                 });
-                modalTinyBtn.setContent("Thanks for downloading! If you liked this model please hit the like button at its printables.com page, it means a lot to me!");
+                modalTinyBtn.setContent("Thanks for downloading! If you liked this model please hit the like button at its printables.com page, it means a lot to us creators!");
                 modalTinyBtn.addFooterBtn('Visit Printables model page', 'tingle-btn tingle-btn--primary tingle-btn--pull-right orange', function () {
                     window.open( link);
                 });
@@ -79,7 +85,6 @@
     <div class="row">
         <div class="twelve columns" style="margin-top:10px;margin-bottom:10px;">
             <h2>3d model customizer</h2>
-            Find my 3d models at <a href="https://www.printables.com/@sui77">printables.com/@sui77</a>
             <hr>
         </div>
     </div>
@@ -91,11 +96,9 @@
 
                 <select id="modelfile" class="u-full-width">
                     <option value="">--- Select Model ---</option>
-                    <option value="keytag" <?=($_SERVER['REQUEST_URI']=='/keytag')?'selected':''?>>Stencil Type Keytag</option>
-                    <option value="keytag2" <?=($_SERVER['REQUEST_URI']=='/keytag2')?'selected':''?>>Minimalistic Flexible Key Tags by @Akio</option>
-                    <option value="trim" <?=($_SERVER['REQUEST_URI']=='/trim')?'selected':''?>>Nutella Jar Candy Dispenser Trim</option>
-                    <option value="ribbon450" <?=($_SERVER['REQUEST_URI']=='/ribbon450')?'selected':''?>>Nutella 450g Jar Ribbon</option>
-                    <option data-placeholder="Manufacturer;Material;Filament Name" value="swatch" <?=($_SERVER['REQUEST_URI']=='/swatch')?'selected':''?>>Filament Swatch by @Yimir_326009</option>
+                    <?php foreach ($validFiles as $key => $data) { ?>
+                    <option value="<?=$key?>" <?=($_SERVER['REQUEST_URI']=='/'.$key)?'selected':''?>><?=$data['title']?></option>
+                    <?php } ?>
                 </select>
 
                 <input class="u-full-width js-textfield" type="text" id="text1" placeholder="">
@@ -110,6 +113,10 @@
             </form>
 
             <div id="status"></div>
+            <hr>
+            <div id="modelinfo">
+
+            </div>
 
         </div>
 

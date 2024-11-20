@@ -1,47 +1,4 @@
 
-var objTypes = {
-    keytag: {
-        camera: [0, 9, 9],
-        rotation: [0, 0 , 3.14],
-        position: [-0.5, 0, 0],
-        scale: [0.21, 0.21, 0.21],
-        url: 'https://www.printables.com/model/611327-stencil-style-key-tag-online-customizer',
-        popup: false
-    },
-    keytag2: {
-        camera: [0, 9, 9],
-        rotation: [0, 0 , 3.14],
-        position: [-0.5, 0, 0],
-        scale: [0.21, 0.21, 0.21],
-        url: 'https://www.printables.com/model/615049-minimalistic-flexible-key-tags/files',
-        popup: false
-    },
-    trim: {
-        camera: [0, 12, 6],
-        rotation: [3.14, 0, 2],
-        position: [0, 1, 4],
-        scale: [0.16, 0.16, 0.16],
-        url: 'https://www.printables.com/model/274646-nutella-jar-candy-dispenser',
-        popup: false
-    },
-    ribbon450: {
-        camera: [0, 9, 7],
-        rotation: [0, 0, 3.14/4 + 3.14*2.5],
-        position: [-0.5, 0, 0],
-        scale: [0.08, 0.08, 0.08],
-        url: 'https://www.printables.com/model/499766-nutella-jar-candy-dispenser-ii',
-        popup: false
-    },
-    swatch: {
-        camera: [0,3 , 5],
-        rotation: [0, 0, 3.14/4 + 3.14*2.5],
-        position: [-0.5, 0, 0],
-        scale: [0.08, 0.08, 0.08],
-        url: 'https://www.printables.com/model/263740-filament-swatch-remix/files',
-        popup: false
-    }
-}
-
 
 import * as THREE from './three/build/three.module.js';
 import {STLLoader} from './three/build/jsm/loaders/STLLoader.js';
@@ -143,8 +100,8 @@ function animate() {
 }
 
 function changeModel(modelfile) {
-
-    let texts = $('option[value=' + modelfile + ']').data('placeholder');
+    let model = objTypes[modelfile];
+    let texts = model.textfields;
     if (typeof texts == 'undefined') {
         texts = 'Enter your text here.';
     }
@@ -158,7 +115,11 @@ function changeModel(modelfile) {
     init('examples/' + modelfile + '.stl', modelfile);
     animate();
 
-
+    $('#modelinfo').html(`
+        <strong>Model:</title> <a href="${model.url}">${model.title}</a><br>
+        <strong>Creator:</title> <a href="https://printables.com/${model.creator}">${model.creator}</a>
+        
+    `);
 
     window.history.pushState({"modelfile": modelfile },"", '/' + modelfile);
 

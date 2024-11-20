@@ -13,8 +13,8 @@ docker build -t testcd .
 docker run -it \
   --privileged \
   -v /var/run/docker.sock:/var/run/docker.sock \
-  -v /data/3dsuili:/app \
+  -v /data/candy-dispenser-trim-customizer:/app \
   -v /tmp/mdc:/app/blender \
   -e HOSTBDIR=/tmp/mdc \
-  -p 84:80 \
+  -p 86:80 \
   testcd

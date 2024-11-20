@@ -3,57 +3,6 @@ ini_set('display_errors', 1);
 header('Content-type: application/json');
 include 'config.php';
 
-$validFiles = [
-    'keytag' => [
-        'image' => 'sui77/blender:3.5.1',
-        'blend' => 'keytag.blend',
-        'py' => 'keytag.py',
-        'nf' => 'KeyTag',
-    ],
-    'keytag2' => [
-        'image' => 'sui77/blender:3.5.1',
-        'blend' => 'keytag2.blend',
-        'py' => 'keytag.py',
-        'nf' => 'KeyTag2',
-    ],
-
-    'trim' => [
-        'image' => 'sui77/blender:3.5.1',
-        'blend' => 'trim.blend',
-        'py' => 'trim.py',
-        'nf' => 'Trim',
-    ],
-    'ribbon500' => [
-        'image' => 'sui77/blender:3.5.1',
-        'blend' => 'ribbon500.blend',
-        'py' => 'ribbon.py',
-        'nf' => 'Ribbon',
-    ],
-    'ribbon450' => [
-        'image' => 'sui77/blender:3.5.1',
-        'blend' => 'ribbon450.blend',
-        'py' => 'ribbon.py',
-        'nf' => 'Ribbon',
-    ],
-    'letters' => [
-        'image' => 'sui77/blender:3.5.1',
-        'blend' => 'fold-customizer.blend',
-        'py' => 'fold-customizer.py',
-        'nf' => 'PopupLetters',
-     ],
-    'letters+' => [
-        'image' => 'sui77/blender:3.5.1',
-        'blend' => 'fold-customizer2.blend',
-        'py' => 'fold-customizer.py',
-        'nf' => 'PopupLetters',
-     ],
-     'swatch' => [
-        'image' => 'sui77/blender:3.5.1',
-        'blend' => 'filamentswatch.blend',
-        'py' => 'filamentswatch.py',
-        'nf' => 'FilamentSwatch',
-     ]
-];
 $modelfile = $_POST['modelfile'];
 if (!array_key_exists($modelfile, $validFiles)) {
     echo json_encode(['error' => 'Invalid model.', 'result' => '']);
