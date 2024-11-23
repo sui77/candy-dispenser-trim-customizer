@@ -7,7 +7,7 @@ $conf = [
 
 $validFiles = [
     'housenumber' => [
-        'title' => '[title] by @Whitey4405',
+        'title' => 'Contemporary Stand-off House Numbers & Name Board by @Whitey4405',
         'image' => 'sui77/blender:4.2.1',
         'blend' => 'house-number.blend',
         'py' => 'house-number.py',
@@ -17,9 +17,9 @@ $validFiles = [
             'rotation' => [0, 0 , 0],
             'position' => [10, 0, 0],
             'scale' => [0.11, 0.11, 0.11],
-            'title' => '[title]',
+            'title' => 'Contemporary Stand-off House Numbers & Name Board',
             'creator' => '@Whitey4405',
-            'url' => 'https://www.printables.com/model/104691-contemporary-stand-off-house-numbers',
+            'url' => 'https://www.printables.com/model/1077172-contemporary-stand-off-house-numbers-name-board',
         ],
     ],
     'keytag' => [
